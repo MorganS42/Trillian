@@ -1,0 +1,210 @@
+/* Reset & Box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Color palette & font variables */
+:root {
+  --bg-color: #f5f5f0;
+  --text-color: #222222;
+  --accent-color: #4cbb17;
+  --accent-light: #e8f5e9; /* Made this lighter for better contrast */
+  --accent2: #f4a261;
+  --accent3: #2a9d8f;
+  --border-color: #dddddd;
+  --link-color: var(--accent-color);
+  --header-font: 'Lora', serif; /* Updated Font */
+  --body-font: 'Lato', sans-serif; /* Updated Font */
+  --transition-speed: 0.3s;
+  --max-content-width: 800px;
+}
+
+/* Dark mode - Activated by class on root element */
+:root.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --accent-color: #66bb6a;
+  --accent-light: #2c3e50; /* Changed for dark mode tables */
+  --accent2: #bb86fc;
+  --accent3: #03dac6;
+  --border-color: #333333;
+  --link-color: var(--accent-color);
+}
+
+/* Base styling */
+html, body {
+  height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  line-height: 1.6;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.container {
+  max-width: var(--max-content-width);
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font);
+  color: var(--accent-color);
+  margin: 1.5rem 0 1rem;
+  line-height: 1.2;
+  transition: color var(--transition-speed);
+  text-align: center;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1rem;
+  text-align: left; /* IMPROVED: Changed from center for readability */
+}
+
+/* Lists */
+ul {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--link-color);
+  transition: all var(--transition-speed);
+}
+a:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border-bottom: none;
+}
+
+/* Images: center, uniform sizing */
+img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+img.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 1.5rem auto 0.5rem; /* Adjusted margin */
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1.5rem 0;
+  background-color: var(--accent-light);
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+  text-align: left;
+}
+
+/* Code */
+code {
+  font-family: 'Courier New', monospace;
+  background-color: rgba(0,0,0,0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+pre {
+  background-color: rgba(0,0,0,0.05);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+}
+
+/* --- NEW: Simplified and Modern Table Styles --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden; /* Ensures border-radius clips child elements */
+}
+th, td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+th {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  font-weight: bold;
+}
+tbody tr {
+  transition: background-color 0.2s;
+}
+tbody tr:last-child td {
+  border-bottom: none; /* Remove border from last row */
+}
+tbody tr:nth-child(even) {
+  background-color: var(--accent-light);
+}
+tbody tr:hover {
+  background-color: var(--accent2);
+  color: var(--bg-color);
+}
+/* --- End of new table styles --- */
+
+
+/* Toggle switch styling */
+.theme-switch-wrapper {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 28px;
+  transition: background-color var(--transition-speed);
+  display: block;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform var(--transition-speed);
+}
+input:checked + .slider {
+  background-color: var(--accent-color);
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
