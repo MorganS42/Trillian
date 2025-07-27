@@ -23,15 +23,16 @@
   --max-content-width: 800px;
 }
 
+/* UPDATED: Refreshed dark mode color palette for a better experience */
 :root.dark-mode {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --accent-color: #4dabf7;
-  --accent-light: #1e1e1e;
-  --link-color: #74c0fc;
-  --border-color: #343a40;
-  --hover-bg-color: #4dabf7;
-  --hover-text-color: #121212;
+  --bg-color: #18191a;
+  --text-color: #e4e6eb;
+  --accent-color: #30a46c;
+  --accent-light: #242526;
+  --link-color: #45b17a;
+  --border-color: #393a3b;
+  --hover-bg-color: var(--accent-color);
+  --hover-text-color: #ffffff;
 }
 
 /* --- 2. Base & Typography --- */
@@ -174,8 +175,8 @@ tbody tr:hover a {
 }
 
 /* --- 5. Images & Media --- */
-/* UPDATED: This selector now targets all images that are direct children of .container */
-.container > img {
+/* UPDATED: This selector now targets the class added by the python script */
+img.product-image {
   display: block;
   margin: 2rem auto;
   max-width: 100%;
