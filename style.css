@@ -1,187 +1,218 @@
-/* Reset & Box-sizing */
+/* ---
+1. Variables
+2. Base & Typography
+3. Layout & Components
+4. Tables
+5. Images & Media
+6. Theme Switcher
+--- */
+
+/* --- 1. Variables --- */
+:root {
+  --bg-color: #fdfbf5; /* UPDATED: Changed from pure white to a soft cream */
+  --text-color: #212529;
+  --accent-color: #007bff;
+  --accent-light: #ffffff; /* UPDATED: Changed to white to contrast with the cream background */
+  --link-color: #0056b3;
+  --border-color: #dee2e6;
+  --header-font: 'Lora', serif;
+  --body-font: 'Lato', sans-serif;
+  --hover-bg-color: #0056b3;
+  --hover-text-color: #ffffff;
+  --transition-speed: 0.3s;
+  --max-content-width: 800px;
+}
+
+:root.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --accent-color: #4dabf7;
+  --accent-light: #1e1e1e;
+  --link-color: #74c0fc;
+  --border-color: #343a40;
+  --hover-bg-color: #4dabf7;
+  --hover-text-color: #121212;
+}
+
+/* --- 2. Base & Typography --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Color palette & font variables */
-:root {
-  --bg-color: #f5f5f0;
-  --text-color: #222222;
-  --accent-color: #4cbb17;
-  --accent-light: #e8f5e9; /* Made this lighter for better contrast */
-  --accent2: #f4a261;
-  --accent3: #2a9d8f;
-  --border-color: #dddddd;
-  --link-color: var(--accent-color);
-  --header-font: 'Lora', serif; /* Updated Font */
-  --body-font: 'Lato', sans-serif; /* Updated Font */
-  --transition-speed: 0.3s;
-  --max-content-width: 800px;
-}
-
-/* Dark mode - Activated by class on root element */
-:root.dark-mode {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --accent-color: #66bb6a;
-  --accent-light: #2c3e50; /* Changed for dark mode tables */
-  --accent2: #bb86fc;
-  --accent3: #03dac6;
-  --border-color: #333333;
-  --link-color: var(--accent-color);
-}
-
-/* Base styling */
 html, body {
-  height: 100%;
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--body-font);
-  line-height: 1.6;
+  line-height: 1.7;
   transition: background-color var(--transition-speed), color var(--transition-speed);
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font);
+  color: var(--accent-color);
+  margin: 2rem 0 1rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+em, i {
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: 700;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.quote-attribution {
+  text-align: right;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* --- 3. Layout & Components --- */
 .container {
   max-width: var(--max-content-width);
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
+.content-box {
+  background-color: var(--accent-light);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 2rem 0;
+  border: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 2.5rem 0;
+  background-color: var(--accent-light);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.author-info p {
+  margin: 0;
+}
+
+.author-name {
   font-family: var(--header-font);
-  color: var(--accent-color);
-  margin: 1.5rem 0 1rem;
-  line-height: 1.2;
-  transition: color var(--transition-speed);
-  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
-/* Paragraphs */
-p {
-  margin-bottom: 1rem;
-  text-align: left; /* IMPROVED: Changed from center for readability */
+.author-meta {
+  font-size: 0.9em;
+  opacity: 0.8;
 }
 
-/* Lists */
-ul {
-  padding-left: 20px;
-  margin-bottom: 1rem;
-}
-ul li {
-  margin-bottom: 0.5rem;
+/* --- 4. Tables --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden; /* Clips children to parent's border-radius */
 }
 
-/* Links */
-a {
-  color: var(--link-color);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--link-color);
-  transition: all var(--transition-speed);
+th, td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
-a:hover {
+
+th {
   background-color: var(--accent-color);
-  color: var(--bg-color);
+  color: #ffffff; /* Always white for contrast on accent color */
+  font-weight: 700;
+}
+
+tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Images: center, uniform sizing */
-img {
+tbody tr:nth-child(even) {
+  background-color: var(--accent-light);
+}
+
+tbody tr:hover {
+  background-color: var(--hover-bg-color);
+  color: var(--hover-text-color);
+}
+
+tbody tr:hover a {
+  color: var(--hover-text-color); /* Ensure link color changes on row hover */
+}
+
+/* --- 5. Images & Media --- */
+img.product-image {
   display: block;
   margin: 1rem auto;
   max-width: 100%;
   height: auto;
-  object-fit: cover;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
 }
+
 img.profile-img {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  margin: 1.5rem auto 0.5rem; /* Adjusted margin */
+  margin: 0;
+  border: 2px solid var(--accent-color);
 }
 
-/* Blockquotes */
-blockquote {
-  border-left: 4px solid var(--accent-color);
-  padding-left: 1rem;
-  font-style: italic;
-  margin: 1.5rem 0;
-  background-color: var(--accent-light);
-  transition: background-color var(--transition-speed), border-color var(--transition-speed);
-  text-align: left;
-}
-
-/* Code */
-code {
-  font-family: 'Courier New', monospace;
-  background-color: rgba(0,0,0,0.05);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-}
-pre {
-  background-color: rgba(0,0,0,0.05);
-  padding: 1rem;
-  overflow-x: auto;
-  border-radius: 6px;
-  margin: 1.5rem 0;
-}
-
-/* --- NEW: Simplified and Modern Table Styles --- */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border-radius: 8px;
-  overflow: hidden; /* Ensures border-radius clips child elements */
-}
-th, td {
-  padding: 0.85rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
-}
-th {
-  background-color: var(--accent-color);
-  color: var(--bg-color);
-  font-weight: bold;
-}
-tbody tr {
-  transition: background-color 0.2s;
-}
-tbody tr:last-child td {
-  border-bottom: none; /* Remove border from last row */
-}
-tbody tr:nth-child(even) {
-  background-color: var(--accent-light);
-}
-tbody tr:hover {
-  background-color: var(--accent2);
-  color: var(--bg-color);
-}
-/* --- End of new table styles --- */
-
-
-/* Toggle switch styling */
+/* --- 6. Theme Switcher --- */
 .theme-switch-wrapper {
   position: fixed;
   top: 1rem;
   right: 1rem;
   z-index: 1000;
 }
+
 .switch {
   position: relative;
   display: inline-block;
   width: 52px;
   height: 28px;
 }
+
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -189,8 +220,8 @@ tbody tr:hover {
   background-color: #ccc;
   border-radius: 28px;
   transition: background-color var(--transition-speed);
-  display: block;
 }
+
 .slider:before {
   content: "";
   position: absolute;
@@ -202,9 +233,11 @@ tbody tr:hover {
   border-radius: 50%;
   transition: transform var(--transition-speed);
 }
+
 input:checked + .slider {
   background-color: var(--accent-color);
 }
+
 input:checked + .slider:before {
   transform: translateX(24px);
 }
