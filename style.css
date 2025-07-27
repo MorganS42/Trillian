@@ -9,10 +9,10 @@
 
 /* --- 1. Variables --- */
 :root {
-  --bg-color: #fdfbf5; /* UPDATED: Changed from pure white to a soft cream */
+  --bg-color: #fdfbf5;
   --text-color: #212529;
   --accent-color: #007bff;
-  --accent-light: #ffffff; /* UPDATED: Changed to white to contrast with the cream background */
+  --accent-light: #ffffff;
   --link-color: #0056b3;
   --border-color: #dee2e6;
   --header-font: 'Lora', serif;
@@ -174,9 +174,10 @@ tbody tr:hover a {
 }
 
 /* --- 5. Images & Media --- */
-img.product-image {
+/* UPDATED: This selector now targets all images that are direct children of .container */
+.container > img {
   display: block;
-  margin: 1rem auto;
+  margin: 2rem auto;
   max-width: 100%;
   height: auto;
   border-radius: 8px;
